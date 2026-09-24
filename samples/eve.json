@@ -1,0 +1,4 @@
+{"timestamp":"2026-09-24T12:00:00+00:00","event_type":"flow","src_ip":"10.20.0.5","dest_ip":"10.20.0.80","dest_port":22,"proto":"TCP"}
+{"timestamp":"2026-09-24T12:00:05+00:00","event_type":"flow","src_ip":"10.20.0.5","dest_ip":"10.20.0.80","dest_port":23,"proto":"TCP"}
+{"timestamp":"2026-09-24T12:00:10+00:00","event_type":"flow","src_ip":"10.20.0.5","dest_ip":"10.20.0.80","dest_port":25,"proto":"TCP"}
+{"timestamp":"2026-09-24T12:00:15+00:00","event_type":"dns","src_ip":"10.20.0.9","dest_ip":"8.8.8.8","dest_port":53,"proto":"UDP","dns":{"rrname":"aZ8fK2mQ9xP7cV4nR6tY1uI3oL5sD0hJ.telemetry.example"}}
