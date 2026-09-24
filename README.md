@@ -337,3 +337,26 @@ Beacon 暂时没硬贴 Technique。只有周期性外联还不够说明具体协
 更详细的规则想法在 docs/DETECTION_NOTES.md。
 
 当前本地测试：8 passed。
+## v0.3：Alert 不够，开始聚 Case
+
+一堆 Alert 平铺出来其实还是挺吵的。
+
+所以这版加了 Case Builder：共享 IP、时间上足够接近的告警会自动聚在一起，再统一算 Case Risk、规则集合、ATT&CK 覆盖和时间线。
+
+例如：
+
+    NET-SCAN-001
+           +
+    CHAIN-001
+           ↓
+       CASE-001
+
+直接生成 Case 报告：
+
+    nightwatch samples/demo.jsonl --case-report cases.md --out report.md
+
+Case 不是按规则名硬凑，而是看实体交集和时间距离。默认时间间隔 30 分钟，可以用 --case-gap 调。
+
+现在 CI 每次都会同时产出 report.md 和 cases.md。
+
+当前本地测试：11 passed。
