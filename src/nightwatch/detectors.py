@@ -8,9 +8,6 @@ from typing import Iterable
 from .models import Alert, Event
 
 
-SEVERITY_SCORE = {"low": 25, "medium": 50, "high": 75, "critical": 95}
-
-
 def _entropy(value: str) -> float:
     if not value:
         return 0.0
@@ -134,4 +131,38 @@ def dns_tunnel(events: Iterable[Event]) -> list[Alert]:
     return alerts
 
 
-DETECTORS = [auth_chain, port_scan, beaconing, dns_tunnel]
+def scan_then_auth(events: Iterable[Event]) -> list[Alert]:
+    by_pair: dict[tuple[str, str], list[Event]] = defaultdict(list)
+    for event in events:
+        if event.src and event.dst:
+            by_pair[(event.src, event.dst)].append(event)
+
+    alerts: list[Alert] = []
+    for (src, dst), items in by_pair.items():
+        items.sort(key=lambda e: e.ts)
+        for success in (e for e in items if e.kind == "auth" and e.status.lower() in {"ok", "success", "accepted"}):
+            recent = [e for e in items if 0 <= (success.ts - e.ts).total_seconds() <= 600]
+            ports = {e.port for e in recent if e.kind == "net" and e.port is not None}
+            failures = [e for e in recent if e.kind == "auth" and e.status.lower() in {"fail", "failed", "denied"}]
+            if len(ports) >= 8 and len(failures) >= 3:
+                first = min([e.ts for e in recent if e.kind == "net" and e.port is not None] + [failures[0].ts])
+                alerts.append(Alert(
+                    rule_id="CHAIN-001",
+                    title="Service discovery followed by authentication attack",
+                    severity="critical",
+                    score=92,
+                    entity=f"{src}->{dst}",
+                    first_seen=first,
+                    last_seen=success.ts,
+                    evidence={
+                        "distinct_ports": len(ports),
+                        "auth_failures": len(failures),
+                        "successful_user": success.user,
+                        "window_seconds": 600,
+                    },
+                ))
+                break
+    return alerts
+
+
+DETECTORS = [auth_chain, port_scan, beaconing, dns_tunnel, scan_then_auth]
