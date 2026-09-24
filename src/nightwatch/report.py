@@ -43,3 +43,28 @@ def as_markdown(alerts: list[Alert]) -> str:
             "",
         ]
     return "\n".join(lines)
+
+
+def cases_markdown(cases) -> str:
+    lines = ["# NightWatch Cases", ""]
+    if not cases:
+        return "\n".join(lines + ["No cases."])
+
+    for case in cases:
+        lines += [
+            f"## {case.case_id} · Risk {case.score}",
+            "",
+            f"- window: `{case.first_seen.isoformat()}` → `{case.last_seen.isoformat()}`",
+            f"- entities: {', '.join(case.entities) or '-'}",
+            f"- rules: {', '.join(case.rules)}",
+            f"- ATT&CK: {', '.join(case.techniques) or '-'}",
+            "",
+            "| Time | Rule | Score | Entity |",
+            "|---|---|---:|---|",
+        ]
+        for alert in case.alerts:
+            lines.append(
+                f"| {alert.first_seen.isoformat()} | {alert.rule_id} | {alert.score} | `{alert.entity}` |"
+            )
+        lines.append("")
+    return "\n".join(lines)
