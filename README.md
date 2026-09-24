@@ -302,3 +302,38 @@ GitHub Actions 每次提交都会自动：
 ---
 
 项目仅用于防御安全研究、实验环境、安全分析和合法授权场景。
+
+## v0.2：开始接真实安全日志
+
+这一版我不想只在自己定义的 JSONL 里玩了，所以加了两个 Adapter：
+
+- Suricata EVE JSON
+- Zeek TSV 日志
+
+数据先统一成 Event，再交给 Detector。也就是说检测逻辑不用知道日志到底来自 Suricata 还是 Zeek。
+
+Suricata / Zeek / JSONL -> Event -> Detector -> Correlation -> Alert -> Risk
+
+可以直接跑：
+
+    nightwatch samples/eve.json --input-format suricata --stats
+    nightwatch samples/conn.log --input-format zeek --stats
+
+另外加了 CHAIN-001。它会把同一来源的服务探测、连续认证失败和最终成功放进同一个 10 分钟窗口里看。
+
+我比较喜欢这种规则，因为它不是在问“某一条日志像不像攻击”，而是在问“这一串行为连起来以后是不是更值得调查”。
+
+### ATT&CK
+
+现在只给证据比较明确的规则做映射：
+
+- AUTH-SEQ-001 -> T1110
+- NET-SCAN-001 -> T1046
+- DNS-TUNNEL-001 -> T1071.004
+- CHAIN-001 -> T1046 + T1110
+
+Beacon 暂时没硬贴 Technique。只有周期性外联还不够说明具体协议或 C2 技术，我不想让标签比证据跑得快。
+
+更详细的规则想法在 docs/DETECTION_NOTES.md。
+
+当前本地测试：8 passed。
