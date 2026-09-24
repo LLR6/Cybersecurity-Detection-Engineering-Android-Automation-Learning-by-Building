@@ -16,7 +16,7 @@ def test_auth_fail_then_success():
     events.append(ev(48, "auth", src="10.0.0.8", user="root", status="success"))
     alerts = run(events)
     assert alerts[0].rule_id == "AUTH-SEQ-001"
-    assert alerts[0].score == 95
+    assert alerts[0].techniques[0]["id"] == "T1110"
 
 
 def test_port_scan():
@@ -35,7 +35,8 @@ def test_beacon():
 def test_dns_entropy():
     q = "aZ8fK2mQ9xP7cV4nR6tY1uI3oL5sD0hJ.evil.example"
     alerts = run([ev(1, "dns", src="10.0.0.6", query=q)])
-    assert any(a.rule_id == "DNS-TUNNEL-001" for a in alerts)
+    dns = next(a for a in alerts if a.rule_id == "DNS-TUNNEL-001")
+    assert dns.techniques[0]["id"] == "T1071.004"
 
 
 def test_risk_aggregation():
@@ -43,3 +44,16 @@ def test_risk_aggregation():
     alerts = run(events)
     risk = risk_by_entity(alerts)
     assert next(iter(risk.values())) >= 80
+
+
+def test_scan_then_auth_chain():
+    events = [ev(i * 5, "net", src="198.51.100.8", dst="10.0.0.20", port=20 + i) for i in range(8)]
+    events += [
+        ev(60, "auth", src="198.51.100.8", dst="10.0.0.20", user="admin", status="fail"),
+        ev(70, "auth", src="198.51.100.8", dst="10.0.0.20", user="admin", status="fail"),
+        ev(80, "auth", src="198.51.100.8", dst="10.0.0.20", user="admin", status="fail"),
+        ev(90, "auth", src="198.51.100.8", dst="10.0.0.20", user="admin", status="success"),
+    ]
+    chain = next(a for a in run(events) if a.rule_id == "CHAIN-001")
+    assert chain.score == 92
+    assert len(chain.techniques) == 2
