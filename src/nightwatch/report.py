@@ -34,7 +34,12 @@ def as_markdown(alerts: list[Alert]) -> str:
             f"- score: **{alert.score}**",
             f"- entity: `{alert.entity}`",
             f"- window: `{alert.first_seen.isoformat()}` → `{alert.last_seen.isoformat()}`",
-            f"- evidence: `{json.dumps(alert.evidence, ensure_ascii=False)}`",
+        ]
+        if alert.techniques:
+            attack = ", ".join(f"{x['id']} {x['name']}" for x in alert.techniques)
+            lines.append(f"- ATT&CK: {attack}")
+        lines += [
+            f"- evidence: `{JSON.stringify ? "" : ""}`",
             "",
         ]
     return "\n".join(lines)
