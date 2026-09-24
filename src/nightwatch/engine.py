@@ -3,7 +3,9 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from .adapters import load_suricata, load_zeek
 from .detectors import DETECTORS
+from .metadata import enrich
 from .models import Alert, Event
 
 
@@ -21,10 +23,25 @@ def load_jsonl(path: str | Path) -> list[Event]:
     return events
 
 
+def load_events(path: str | Path, fmt: str = "auto") -> list[Event]:
+    path = Path(path)
+    if fmt == "auto":
+        name = path.name.lower()
+        fmt = "zeek" if path.suffix == ".log" else "suricata" if "eve" in name else "jsonl"
+    if fmt == "suricata":
+        return load_suricata(path)
+    if fmt == "zeek":
+        return load_zeek(path)
+    if fmt == "jsonl":
+        return load_jsonl(path)
+    raise ValueError(f"unknown input format: {fmt}")
+
+
 def run(events: list[Event]) -> list[Alert]:
     alerts: list[Alert] = []
     for detector in DETECTORS:
         alerts.extend(detector(events))
+    enrich(alerts)
     return sorted(alerts, key=lambda a: (-a.score, a.first_seen))
 
 
