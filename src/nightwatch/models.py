@@ -22,6 +22,8 @@ class Event:
     query: str = ""
     status: str = ""
     action: str = ""
+    protocol: str = ""
+    sensor: str = ""
     raw: dict[str, Any] = field(default_factory=dict)
 
     @classmethod
@@ -36,6 +38,8 @@ class Event:
             query=str(data.get("query", "")),
             status=str(data.get("status", "")),
             action=str(data.get("action", "")),
+            protocol=str(data.get("protocol", "")),
+            sensor=str(data.get("sensor", "")),
             raw=data,
         )
 
@@ -50,6 +54,7 @@ class Alert:
     first_seen: datetime
     last_seen: datetime
     evidence: dict[str, Any]
+    techniques: list[dict[str, str]] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         data = asdict(self)
