@@ -1,0 +1,38 @@
+name: Feature request
+description: Propose a focused, testable improvement
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      description: Describe the engineering or research problem before proposing the implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Keep the proposal local-first, auditable and within the repository's documented safety boundary.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: How should it be validated?
+      description: Tests, fixtures, benchmark changes, expected artifacts, or failure cases.
+    validations:
+      required: true
+  - type: textarea
+    id: tradeoffs
+    attributes:
+      label: Trade-offs / limitations
+      description: What can this change make worse, noisier, slower, or harder to interpret?
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This request stays within the project's documented defensive/local-first scope.
+          required: true
