@@ -1,0 +1,50 @@
+name: Bug report
+description: Report a reproducible problem
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve the project. Use synthetic or properly authorized data only.
+  - type: input
+    id: version
+    attributes:
+      label: Version / commit
+      description: Release version or commit SHA where the problem appears.
+      placeholder: e.g. main@abcdef0
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Exact local steps or smallest fixture needed to reproduce.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized evidence
+      description: Logs/output with secrets, private telemetry and personal data removed.
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Safety / data check
+      options:
+        - label: I removed secrets and private data from this report.
+          required: true
+        - label: I am authorized to share the supplied fixture/log.
+          required: true
