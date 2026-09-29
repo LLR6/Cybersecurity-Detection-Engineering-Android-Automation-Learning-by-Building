@@ -1,26 +1,44 @@
 # Roadmap
 
-## Near term
+## Current foundation
 
-- Expand benign regression fixtures for common scheduled traffic.
-- Add more parser edge-case fixtures for partial Suricata/Zeek records.
-- Add per-rule evaluation summaries.
-- Version suppression configuration schemas.
-- Export machine-readable Case reports.
+- Auth failure → success sequence detection
+- Port fan-out / scan detection
+- Periodic outbound connection detection
+- DNS anomaly detection
+- JSONL / Zeek / Suricata ingestion
+- Case correlation
+- Explainable suppression audit
+- Labeled positive regression corpus
+- Benign zero-alert regression corpus
 
-## Medium term
+## Next
 
-- Time-decay and environment-aware baselines.
-- Rule calibration reports across labeled datasets.
-- Analyst feedback on Case split/merge quality.
-- More explicit ATT&CK mapping provenance.
+### Rule quality
+- per-rule labeled fixtures;
+- threshold sensitivity reports;
+- richer negative examples;
+- missing-field degradation tests.
 
-## Research questions
+### Case quality
+- case split / merge evaluation;
+- entity-role awareness;
+- configurable correlation policies;
+- case-level suppression.
 
-- How much does case-level evidence reduce alert-review time?
-- Which suppression patterns stay stable across environments?
-- Can rule quality be measured without hiding environment-specific trade-offs?
+### Telemetry
+- additional Zeek fields;
+- selected endpoint-event schema;
+- TLS / process context when supplied locally.
+
+## Later
+
+- rule-pack versioning;
+- ATT&CK coverage report;
+- replay benchmark across multiple synthetic environments.
 
 ## Non-goals
 
-No autonomous response, exploit execution, credential collection, persistence or evasion features.
+- autonomous incident verdicts;
+- reputation lookups that silently leave the local environment;
+- claiming production accuracy from synthetic samples.
