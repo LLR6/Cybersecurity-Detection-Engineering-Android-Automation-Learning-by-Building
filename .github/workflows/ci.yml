@@ -60,6 +60,14 @@ jobs:
         run: python scripts/evaluate_sample.py samples/demo.jsonl samples/demo.truth.json --out evaluation.md --fail-on-regression
       - name: Evaluate benign regression corpus
         run: python scripts/evaluate_sample.py samples/benign.jsonl samples/benign.truth.json --out benign-evaluation.md --fail-on-regression
+      - name: Performance smoke
+        run: python scripts/perf_smoke.py samples/demo.jsonl --repeats 5 --output performance-smoke.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nightwatch-performance-smoke-${{ matrix.python-version || 'default' }}
+          path: performance-smoke.json
+
       - name: Build evaluation JSON artifact
         run: python scripts/evaluate_sample.py samples/demo.jsonl samples/demo.truth.json --format json --out evaluation.json
       - name: Validate evaluation JSON schema
