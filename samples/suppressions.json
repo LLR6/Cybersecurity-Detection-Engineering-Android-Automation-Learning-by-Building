@@ -1,0 +1,14 @@
+{
+  "suppressions": [
+    {
+      "rule_id": "NET-BEACON-001",
+      "entity": "10.10.20.*->203.0.113.10:443",
+      "reason": "approved health-check client"
+    },
+    {
+      "rule_id": "NET-SCAN-001",
+      "entity": "10.10.99.5->*",
+      "reason": "authorized vulnerability scanner"
+    }
+  ]
+}
