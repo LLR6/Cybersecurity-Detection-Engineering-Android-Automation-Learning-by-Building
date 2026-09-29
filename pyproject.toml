@@ -6,8 +6,10 @@ build-backend = "setuptools.build_meta"
 name = "lr-nightwatch"
 version = "0.3.0"
 description = "Local-first security event correlation and behavior detection engine"
+readme = "README.md"
 requires-python = ">=3.11"
 authors = [{name = "LLR6"}]
+keywords = ["security", "detection-engineering", "blue-team", "telemetry", "incident-response"]
 dependencies = []
 
 [project.optional-dependencies]
@@ -15,6 +17,11 @@ dev = ["pytest>=8.0"]
 
 [project.scripts]
 nightwatch = "nightwatch.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/LLR6/Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building"
+Repository = "https://github.com/LLR6/Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building"
+Issues = "https://github.com/LLR6/Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
