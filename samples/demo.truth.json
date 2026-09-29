@@ -1,0 +1,21 @@
+{
+  "schema": "nightwatch-eval/v1",
+  "expected": [
+    {
+      "rule_id": "AUTH-SEQ-001",
+      "entity": "10.10.7.23:root"
+    },
+    {
+      "rule_id": "NET-SCAN-001",
+      "entity": "10.10.7.50->10.10.7.80"
+    },
+    {
+      "rule_id": "NET-BEACON-001",
+      "entity": "10.10.7.12->203.0.113.42:443"
+    },
+    {
+      "rule_id": "DNS-TUNNEL-001",
+      "entity": "10.10.7.66"
+    }
+  ]
+}
