@@ -21,6 +21,10 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install -e ".[dev]"
+      - name: Compile package
+        run: python -m compileall -q src/nightwatch
+      - name: Smoke-test installed CLI
+        run: nightwatch --help > /dev/null
       - run: python -m pip install "jsonschema>=4.23"
       - name: CLI version smoke test
         run: nightwatch --version
