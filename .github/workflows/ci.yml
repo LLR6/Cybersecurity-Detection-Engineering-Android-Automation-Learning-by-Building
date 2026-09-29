@@ -36,6 +36,16 @@ jobs:
             for f in schemas/*.json; do python -m json.tool "$f" > /dev/null; done
           fi
       - run: nightwatch samples/demo.jsonl --format md --out report.md
+      - name: Coverage snapshot
+        run: |
+          python -m pip install "coverage>=7.6"
+          coverage run -m pytest
+          coverage report -m
+          coverage xml -o coverage.xml
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building-coverage-${{ matrix.python-version || 'py' }}
+          path: coverage.xml
       - name: Evaluate labeled demo
         run: python scripts/evaluate_sample.py samples/demo.jsonl samples/demo.truth.json --out evaluation.md --fail-on-regression
       - name: Evaluate benign regression corpus
