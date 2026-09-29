@@ -11,6 +11,12 @@
 <p align="center"><a href="https://github.com/LLR6">Profile</a> · <a href="https://github.com/LLR6?tab=repositories">All projects</a> · <a href="https://github.com/LLR6/Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building/issues">Issues</a></p>
 <!-- LR-LAB-CHROME:END -->
 
+<!-- LR-SECOND-PASS:START -->
+<p align="center"><img src="./docs/media/hero.svg" alt="NightWatch — Evidence before alerts" width="100%"></p>
+<p align="center"><a href="#快速跑一下">Quick start</a> · <a href="#现在能抓什么">Rules</a> · <a href="./samples">Samples</a> · <a href="./tests">Tests</a></p>
+<!-- LR-SECOND-PASS:END -->
+
+
 
 > 我挺喜欢那种“看起来没问题，但就是哪里不对劲”的日志。
 
