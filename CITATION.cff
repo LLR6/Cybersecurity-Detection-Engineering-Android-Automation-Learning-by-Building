@@ -10,4 +10,3 @@ repository-code: "https://github.com/LLR6/Cybersecurity-Detection-Engineering-An
 url: "https://github.com/LLR6/Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building"
 abstract: >-
   Local-first explainable security event correlation and behavior detection with reproducible evaluation.
-license: MIT
