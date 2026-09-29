@@ -16,8 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - run: python -m pip install -e ".[dev]"
@@ -52,7 +52,7 @@ jobs:
           coverage run --source=src/nightwatch -m pytest
           coverage report -m --fail-under=50
           coverage xml -o coverage.xml
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building-coverage-${{ matrix.python-version || 'py' }}
           path: coverage.xml
@@ -62,7 +62,7 @@ jobs:
         run: python scripts/evaluate_sample.py samples/benign.jsonl samples/benign.truth.json --out benign-evaluation.md --fail-on-regression
       - name: Performance smoke
         run: python scripts/perf_smoke.py samples/demo.jsonl --repeats 5 --output performance-smoke.json
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: nightwatch-performance-smoke-${{ matrix.python-version || 'default' }}
@@ -81,7 +81,7 @@ jobs:
           /tmp/lr-wheel-smoke/bin/python -m pip install --upgrade pip
           /tmp/lr-wheel-smoke/bin/python -m pip install dist/*.whl
           /tmp/lr-wheel-smoke/bin/nightwatch --version
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: nightwatch-report
           path: |
