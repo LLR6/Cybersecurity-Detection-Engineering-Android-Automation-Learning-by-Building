@@ -425,6 +425,13 @@ python scripts/evaluate_sample.py \
 这不是生产环境准确率声明，而是一个**规则回归门禁**：保证代码演进不会悄悄破坏已有可验证行为。
 <!-- LR-DEEP-CONTENT:END -->
 
+<!-- LR-ENGINEERING-REF:START -->
+## Engineering Reference
+
+[Architecture](docs/ARCHITECTURE.md) · [Tuning](docs/TUNING.md) · [Security](SECURITY.md) · [Contributing](CONTRIBUTING.md) · [Changelog](CHANGELOG.md) · [Release checklist](docs/RELEASE_CHECKLIST.md) · [Evaluation schema](schemas/evaluation-report.schema.json)
+
+These files document the project's architecture, safety boundaries, reproducibility assumptions and release process.
+<!-- LR-ENGINEERING-REF:END -->
 
 <!-- LR-LAB-FOOTER:START -->
 ---
