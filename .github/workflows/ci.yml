@@ -20,9 +20,12 @@ jobs:
       - run: nightwatch samples/demo.jsonl --format md --out report.md
       - name: Evaluate labeled demo
         run: python scripts/evaluate_sample.py samples/demo.jsonl samples/demo.truth.json --out evaluation.md --fail-on-regression
+      - name: Evaluate benign regression corpus
+        run: python scripts/evaluate_sample.py samples/benign.jsonl samples/benign.truth.json --out benign-evaluation.md --fail-on-regression
       - uses: actions/upload-artifact@v4
         with:
           name: nightwatch-report
           path: |
             report.md
             evaluation.md
+            benign-evaluation.md
