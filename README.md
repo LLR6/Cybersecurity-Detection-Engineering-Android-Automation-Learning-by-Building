@@ -1,5 +1,31 @@
 # NightWatch
 
+<!-- LR-LAB-CHROME:START -->
+<p align="center">
+  <a href="https://github.com/LLR6"><img alt="LR Lab" src="https://img.shields.io/badge/LR_LAB-0x4C52-0D1117?style=for-the-badge&logo=github&logoColor=white"></a>
+  <img alt="DETECTION ENGINEERING" src="https://img.shields.io/badge/DETECTION_ENGINEERING-EF4444?style=for-the-badge">
+</p>
+
+<p align="center">
+  <strong>Evidence before alerts.</strong><br>
+  <sub>Local event correlation and explainable detection</sub>
+</p>
+
+<p align="center">
+  <a href="https://github.com/LLR6/Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/LLR6/Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building?style=flat-square&logo=github&label=stars"></a>
+  <img alt="Last commit" src="https://img.shields.io/github/last-commit/LLR6/Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building?style=flat-square">
+  <img alt="Maintained" src="https://img.shields.io/badge/status-active-success?style=flat-square">
+</p>
+
+<p align="center">
+  <a href="https://github.com/LLR6">Profile</a> ·
+  <a href="https://github.com/LLR6?tab=repositories">All projects</a> ·
+  <a href="https://github.com/LLR6/Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building/issues">Issues</a>
+</p>
+
+<!-- LR-LAB-CHROME:END -->
+
+
 > 我挺喜欢那种“看起来没问题，但就是哪里不对劲”的日志。
 
 这是我自己折腾的一个本地安全事件关联与行为检测引擎，主要用来研究登录行为、网络连接、周期外联、DNS 异常这些东西。
@@ -360,3 +386,13 @@ Case 不是按规则名硬凑，而是看实体交集和时间距离。默认时
 现在 CI 每次都会同时产出 report.md 和 cases.md。
 
 当前本地测试：11 passed。
+
+<!-- LR-LAB-FOOTER:START -->
+---
+
+<p align="center">
+  <sub>Part of <a href="https://github.com/LLR6">LR Lab</a> · Security × AI × Android × Automation</sub><br>
+  <sub>Build things that are useful, inspectable, and reproducible.</sub>
+</p>
+<!-- LR-LAB-FOOTER:END -->
+
