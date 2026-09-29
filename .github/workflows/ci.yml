@@ -46,6 +46,13 @@ jobs:
         run: python scripts/validate_json_schema.py schemas/evaluation-report.schema.json evaluation.json
       - name: Hash report artifacts
         run: sha256sum report.md evaluation.md benign-evaluation.md > reports.sha256
+      - name: Smoke-test built wheel
+        shell: bash
+        run: |
+          python -m venv /tmp/lr-wheel-smoke
+          /tmp/lr-wheel-smoke/bin/python -m pip install --upgrade pip
+          /tmp/lr-wheel-smoke/bin/python -m pip install dist/*.whl
+          /tmp/lr-wheel-smoke/bin/nightwatch --version
       - uses: actions/upload-artifact@v4
         with:
           name: nightwatch-report
