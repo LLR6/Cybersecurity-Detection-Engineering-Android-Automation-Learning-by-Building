@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/LLR6/NightWatch/schemas/evaluation-report.schema.json",
+  "title": "NightWatch evaluation report",
+  "type": "object",
+  "required": [
+    "schema",
+    "counts",
+    "precision",
+    "recall",
+    "f1",
+    "matched",
+    "missed",
+    "unexpected"
+  ],
+  "properties": {
+    "schema": {
+      "const": "nightwatch-evaluation-report/v1"
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "tp",
+        "fp",
+        "fn"
+      ],
+      "properties": {
+        "tp": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fp": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fn": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "precision": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "recall": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "f1": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "matched": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/alertKey"
+      }
+    },
+    "missed": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/alertKey"
+      }
+    },
+    "unexpected": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/alertKey"
+      }
+    }
+  },
+  "$defs": {
+    "alertKey": {
+      "type": "object",
+      "required": [
+        "rule_id",
+        "entity"
+      ],
+      "properties": {
+        "rule_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entity": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}
