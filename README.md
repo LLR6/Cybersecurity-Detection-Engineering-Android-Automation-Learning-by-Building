@@ -14,6 +14,7 @@
 <!-- LR-PROJECT-DOCS:START -->
 ### Project docs
 [Architecture](./docs/ARCHITECTURE.md) · [Benchmarks](./docs/BENCHMARKS.md) · [Tuning](./docs/TUNING.md) · [Threat model](./docs/THREAT_MODEL.md) · [Roadmap](./docs/ROADMAP.md) · [Compatibility](./docs/COMPATIBILITY.md) · [Releasing](./docs/RELEASING.md) · [Security](./SECURITY.md) · [Support](./SUPPORT.md)
+ · [Change risk](./docs/CHANGE_RISK.md) · [Failure modes](./docs/FAILURE_MODES.md) · [Performance](./docs/PERFORMANCE.md)
 <!-- LR-PROJECT-DOCS:END -->
 <p align="center">[Threat model](docs/THREAT_MODEL.md)</p>
 
