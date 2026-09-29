@@ -24,6 +24,16 @@ jobs:
       - name: CLI version smoke test
         run: nightwatch --version
       - run: pytest -q
+      - name: Compile package
+        run: python -m compileall -q src
+      - name: Build wheel
+        run: python -m pip wheel . --no-deps -w dist
+      - name: Validate JSON Schemas
+        shell: bash
+        run: |
+          if compgen -G "schemas/*.json" > /dev/null; then
+            for f in schemas/*.json; do python -m json.tool "$f" > /dev/null; done
+          fi
       - run: nightwatch samples/demo.jsonl --format md --out report.md
       - name: Evaluate labeled demo
         run: python scripts/evaluate_sample.py samples/demo.jsonl samples/demo.truth.json --out evaluation.md --fail-on-regression
