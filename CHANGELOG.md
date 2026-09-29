@@ -2,7 +2,11 @@
 
 ## Unreleased
 
-_No unreleased changes yet._
+### Fixed
+- Tightened automatic Suricata EVE filename detection so generic names such as `events.data` are not misclassified merely because they contain the substring `eve`.
+
+### Tests
+- Added malformed, empty and auto-format robustness coverage.
 
 ## 0.4.0 - 2026-09-29
 
