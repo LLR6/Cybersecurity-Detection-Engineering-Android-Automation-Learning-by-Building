@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this software in research, teaching, or a technical report, please cite it using the metadata below."
+title: "NightWatch"
+type: software
+authors:
+  - family-names: "LLR6"
+version: "0.4.0"
+date-released: 2026-09-29
+repository-code: "https://github.com/LLR6/Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building"
+url: "https://github.com/LLR6/Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building"
+abstract: >-
+  Local-first explainable security event correlation and behavior detection with reproducible evaluation.
+license: MIT
