@@ -53,7 +53,7 @@ jobs:
           /tmp/lr-wheel-smoke/bin/python -m pip install --upgrade pip
           /tmp/lr-wheel-smoke/bin/python -m pip install dist/*.whl
           /tmp/lr-wheel-smoke/bin/nightwatch --version
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: nightwatch-report
           path: |
