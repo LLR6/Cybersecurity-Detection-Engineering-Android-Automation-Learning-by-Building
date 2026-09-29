@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.4.0 - 2026-09-29
 
 ### Added
 - Labeled detector regression evaluation with TP / FP / FN, Precision, Recall and F1.
