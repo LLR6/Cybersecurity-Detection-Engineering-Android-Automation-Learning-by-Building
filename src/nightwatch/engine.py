@@ -27,7 +27,8 @@ def load_events(path: str | Path, fmt: str = "auto") -> list[Event]:
     path = Path(path)
     if fmt == "auto":
         name = path.name.lower()
-        fmt = "zeek" if path.suffix == ".log" else "suricata" if "eve" in name else "jsonl"
+        is_eve = name == "eve.json" or name.startswith("eve.") or name.endswith(".eve.json")
+        fmt = "zeek" if path.suffix == ".log" else "suricata" if is_eve else "jsonl"
     if fmt == "suricata":
         return load_suricata(path)
     if fmt == "zeek":
