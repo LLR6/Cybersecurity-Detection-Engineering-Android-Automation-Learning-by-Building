@@ -4,6 +4,14 @@ import argparse
 import json
 from collections import Counter
 from pathlib import Path
+from importlib.metadata import PackageNotFoundError, version
+
+def package_version():
+    try:
+        return version("lr-nightwatch")
+    except PackageNotFoundError:
+        return "dev"
+
 
 from .cases import build_cases
 from .engine import load_events, run
@@ -13,6 +21,7 @@ from .suppression import apply_suppressions, load_suppressions
 
 def main() -> None:
     parser = argparse.ArgumentParser(prog="nightwatch")
+    parser.add_argument("--version", action="version", version=f"%(prog)s {package_version()}")
     parser.add_argument("input")
     parser.add_argument("--input-format", choices=["auto", "jsonl", "suricata", "zeek"], default="auto")
     parser.add_argument("--format", choices=["json", "md"], default="md")
