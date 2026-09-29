@@ -5,24 +5,10 @@
   <a href="https://github.com/LLR6"><img alt="LR Lab" src="https://img.shields.io/badge/LR_LAB-0x4C52-0D1117?style=for-the-badge&logo=github&logoColor=white"></a>
   <img alt="DETECTION ENGINEERING" src="https://img.shields.io/badge/DETECTION_ENGINEERING-EF4444?style=for-the-badge">
 </p>
-
-<p align="center">
-  <strong>Evidence before alerts.</strong><br>
-  <sub>Local event correlation and explainable detection</sub>
-</p>
-
-<p align="center">
-  <a href="https://github.com/LLR6/Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/LLR6/Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building?style=flat-square&logo=github&label=stars"></a>
-  <img alt="Last commit" src="https://img.shields.io/github/last-commit/LLR6/Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building?style=flat-square">
-  <img alt="Maintained" src="https://img.shields.io/badge/status-active-success?style=flat-square">
-</p>
-
-<p align="center">
-  <a href="https://github.com/LLR6">Profile</a> ·
-  <a href="https://github.com/LLR6?tab=repositories">All projects</a> ·
-  <a href="https://github.com/LLR6/Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building/issues">Issues</a>
-</p>
-
+<p align="center"><strong>Evidence before alerts.</strong><br><sub>Local event correlation and explainable detection</sub></p>
+<p align="center"><a href="https://github.com/LLR6/Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/LLR6/Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building?style=flat-square&logo=github&label=stars"></a>
+  <img alt="Last commit" src="https://img.shields.io/github/last-commit/LLR6/Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building?style=flat-square"> <img alt="Maintained" src="https://img.shields.io/badge/status-active-success?style=flat-square"></p>
+<p align="center"><a href="https://github.com/LLR6">Profile</a> · <a href="https://github.com/LLR6?tab=repositories">All projects</a> · <a href="https://github.com/LLR6/Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building/issues">Issues</a></p>
 <!-- LR-LAB-CHROME:END -->
 
 
@@ -389,10 +375,6 @@ Case 不是按规则名硬凑，而是看实体交集和时间距离。默认时
 
 <!-- LR-LAB-FOOTER:START -->
 ---
-
-<p align="center">
-  <sub>Part of <a href="https://github.com/LLR6">LR Lab</a> · Security × AI × Android × Automation</sub><br>
-  <sub>Build things that are useful, inspectable, and reproducible.</sub>
-</p>
+<p align="center"><sub>Part of <a href="https://github.com/LLR6">LR Lab</a> · Security × AI × Android × Automation</sub><br><sub>Build things that are useful, inspectable, and reproducible.</sub></p>
 <!-- LR-LAB-FOOTER:END -->
 
