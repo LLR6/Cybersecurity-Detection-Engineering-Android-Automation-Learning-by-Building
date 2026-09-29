@@ -354,7 +354,7 @@ Beacon 暂时没硬贴 Technique。只有周期性外联还不够说明具体协
 
 更详细的规则想法在 docs/DETECTION_NOTES.md。
 
-当前本地测试：8 passed。
+测试状态以 GitHub Actions 当前主分支结果为准。
 ## v0.3：Alert 不够，开始聚 Case
 
 一堆 Alert 平铺出来其实还是挺吵的。
@@ -377,7 +377,35 @@ Case 不是按规则名硬凑，而是看实体交集和时间距离。默认时
 
 现在 CI 每次都会同时产出 report.md 和 cases.md。
 
-当前本地测试：11 passed。
+测试状态以 GitHub Actions 当前主分支结果为准。
+
+<!-- LR-CONTENT-UPGRADE:START -->
+## v0.4：把误报治理也变成可审计内容
+
+检测工程真正难的不是“能不能响”，而是**响了以后怎么解释、怎么聚合、哪些已知正常行为为什么被排除**。
+
+现在 CLI 已支持：
+
+```bash
+nightwatch samples/demo.jsonl \
+  --out report.md \
+  --case-report cases.md \
+  --case-gap 30 \
+  --suppressions samples/suppressions.json \
+  --suppressed-out suppressed.json \
+  --stats
+```
+
+新增两条实际工作流：
+
+1. **Case report**：把共享实体、时间上足够接近的 Alert 聚合成 Case，输出风险、规则、ATT&CK 与时间线。
+2. **Suppression audit**：对已知正常行为使用 rule/entity glob 做窄匹配，同时把被抑制的告警、匹配模式和 reason 单独写入 JSON，避免“消失的告警”无法追溯。
+
+调参与 suppression 原则见 [docs/TUNING.md](docs/TUNING.md)。
+
+> suppression 不是白名单越多越好。这里把 suppression 当成一种需要版本控制和定期复核的检测配置，而不是把误报直接删掉。
+
+<!-- LR-CONTENT-UPGRADE:END -->
 
 <!-- LR-LAB-FOOTER:START -->
 ---
