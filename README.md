@@ -407,6 +407,25 @@ nightwatch samples/demo.jsonl \
 
 <!-- LR-CONTENT-UPGRADE:END -->
 
+<!-- LR-DEEP-CONTENT:START -->
+### Labeled regression gate
+
+`samples/demo.jsonl` 现在配有 `samples/demo.truth.json`。CI 会执行：
+
+```bash
+python scripts/evaluate_sample.py \
+  samples/demo.jsonl \
+  samples/demo.truth.json \
+  --out evaluation.md \
+  --fail-on-regression
+```
+
+评估按 `rule_id + entity` 精确匹配，输出 TP / FP / FN、Precision、Recall 和 F1。新增检测器或修改阈值后，如果固定样本出现漏报或额外告警，CI 会直接失败。
+
+这不是生产环境准确率声明，而是一个**规则回归门禁**：保证代码演进不会悄悄破坏已有可验证行为。
+<!-- LR-DEEP-CONTENT:END -->
+
+
 <!-- LR-LAB-FOOTER:START -->
 ---
 <p align="center"><sub>Part of <a href="https://github.com/LLR6">LR Lab</a> · Security × AI × Android × Automation</sub><br><sub>Build things that are useful, inspectable, and reproducible.</sub></p>
